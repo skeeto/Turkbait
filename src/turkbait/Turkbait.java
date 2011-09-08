@@ -1,11 +1,11 @@
 package turkbait;
 
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.io.File;
 
 import java.awt.Robot;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
