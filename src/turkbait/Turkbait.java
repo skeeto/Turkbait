@@ -86,7 +86,7 @@ public class Turkbait {
                 int g = (rgb >>  8) & 0xFF;
                 int b = (rgb >>  0) & 0xFF;
                 if (r > 50 && b < 50 && g < 50) {
-                    mouseX = X + x - 10;
+                    mouseX = X + x;
                     mouseY = Y + y;
                     robot.mouseMove(mouseX, mouseY);
                     return true;
