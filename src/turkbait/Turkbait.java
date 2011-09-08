@@ -16,6 +16,7 @@ public class Turkbait {
     public static final int W = 600;
     public static final int H = 400;
     public static final int BOBW = 100;
+    public static final int BOB_DELAY = 200;
     public static final double CATCH = 1500;
 
     private static Robot robot;
@@ -44,7 +45,7 @@ public class Turkbait {
 
             robot.delay(1000);
             BufferedImage start = getBobber();
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < (15000 / BOB_DELAY); i++) {
                 BufferedImage now = getBobber();
                 double diff = diff(start, now);
                 System.out.println(diff);
@@ -52,7 +53,7 @@ public class Turkbait {
                     System.out.println("BITE!");
                     break;
                 }
-                robot.delay(500);
+                robot.delay(BOB_DELAY);
             }
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON3_MASK);
