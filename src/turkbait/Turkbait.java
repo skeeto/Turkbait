@@ -109,7 +109,6 @@ public class Turkbait {
     private static BufferedImage getBobber() {
         Rectangle r = new Rectangle(mouseX - 25, mouseY - 25, 50, 50);
         BufferedImage bob = robot.createScreenCapture(r);
-        save(bob, "bobber.png");
         return bob;
     }
 
