@@ -15,6 +15,8 @@ public class Turkbait {
     public static final int Y = 50;
     public static final int W = 600;
     public static final int H = 400;
+    public static final int BOBW = 100;
+    public static final double CATCH = 1500;
 
     private static Robot robot;
     private static int mouseX, mouseY;
@@ -46,7 +48,7 @@ public class Turkbait {
                 BufferedImage now = getBobber();
                 double diff = diff(start, now);
                 System.out.println(diff);
-                if (diff > 900) {
+                if (diff > CATCH) {
                     System.out.println("BITE!");
                     break;
                 }
@@ -109,7 +111,8 @@ public class Turkbait {
     }
 
     private static BufferedImage getBobber() {
-        Rectangle r = new Rectangle(mouseX - 25, mouseY - 25, 50, 50);
+        Rectangle r = new Rectangle(mouseX - BOBW / 2, mouseY - BOBW / 2,
+                                    BOBW, BOBW);
         BufferedImage bob = robot.createScreenCapture(r);
         return bob;
     }
