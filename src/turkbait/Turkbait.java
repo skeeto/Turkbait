@@ -44,7 +44,7 @@ public class Turkbait {
                 BufferedImage now = getBobber();
                 double diff = diff(start, now);
                 System.out.println(diff);
-                if (diff > 800) {
+                if (diff > 900) {
                     System.out.println("BITE!");
                     break;
                 }
