@@ -40,6 +40,7 @@ public class Turkbait {
                 System.out.println("error: could not find bobber!");
             }
 
+            robot.delay(1000);
             BufferedImage start = getBobber();
             for (int i = 0; i < 30; i++) {
                 BufferedImage now = getBobber();
