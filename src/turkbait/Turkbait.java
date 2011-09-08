@@ -28,6 +28,7 @@ public class Turkbait {
             System.exit(1);
             return;
         }
+        robot.setAutoDelay(100);
 
         while (true) {
             robot.delay(1500);
