@@ -17,7 +17,8 @@ public class Turkbait {
     public static final int H = 400;
     public static final int BOBW = 100;
     public static final int BOB_DELAY = 200;
-    public static final double CATCH = 1500;
+    public static final double CATCH = 1000;
+    public static final int CAST_KEY = KeyEvent.VK_F9;
 
     private static Robot robot;
     private static int mouseX, mouseY;
@@ -88,7 +89,7 @@ public class Turkbait {
                 int r = (rgb >> 16) & 0xFF;
                 int g = (rgb >>  8) & 0xFF;
                 int b = (rgb >>  0) & 0xFF;
-                if (r > 50 && b < 50 && g < 50) {
+                if (r > 75 && b < 50 && g < 50) {
                     mouseX = X + x;
                     mouseY = Y + y;
                     robot.mouseMove(mouseX, mouseY);
@@ -130,8 +131,9 @@ public class Turkbait {
 
     private static void cast() {
         System.out.println("Casting ...");
-        robot.keyPress(KeyEvent.VK_J);
-        robot.keyRelease(KeyEvent.VK_J);
+        robot.keyPress(CAST_KEY);
+        robot.keyRelease(CAST_KEY);
         robot.delay(2500);
     }
 }
+
