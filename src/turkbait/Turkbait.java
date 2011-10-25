@@ -12,12 +12,12 @@ import javax.imageio.ImageIO;
 
 public class Turkbait {
     public static final int X = 540;
-    public static final int Y = 50;
+    public static final int Y = 100;
     public static final int W = 600;
-    public static final int H = 400;
+    public static final int H = 350;
     public static final int BOBW = 100;
     public static final int BOB_DELAY = 200;
-    public static final double CATCH = 1000;
+    public static final double CATCH = 500;
     public static final int CAST_KEY = KeyEvent.VK_F9;
 
     private static Robot robot;
