@@ -10,20 +10,29 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
+
 public class Turkbait {
-    public static final int X = 540;
-    public static final int Y = 100;
-    public static final int W = 600;
-    public static final int H = 350;
-    public static final int BOBW = 100;
-    public static final int BOB_DELAY = 200;
-    public static final double CATCH = 500;
-    public static final int CAST_KEY = KeyEvent.VK_F9;
+    public static int X;
+    public static int Y;
+    public static int W;
+    public static int H;
+    public static int BOBW;
+    public static int BOB_DELAY;
+    public static double CATCH;
+    public static int CAST_KEY = KeyEvent.VK_F9;
 
     private static Robot robot;
     private static int mouseX, mouseY;
 
     public static void main(String[] args) {
+        loadConfig();
+
         /* Create the robot. */
         try {
             robot = new Robot();
@@ -59,6 +68,35 @@ public class Turkbait {
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON3_MASK);
             robot.mouseRelease(InputEvent.BUTTON3_MASK);
+        }
+    }
+
+    private static void loadConfig() {
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+        input = new FileInputStream("config.properties");
+        prop.load(input);
+
+            X = Integer.parseInt(prop.getProperty("x"));
+            Y = Integer.parseInt(prop.getProperty("y"));
+            W = Integer.parseInt(prop.getProperty("w"));
+            H = Integer.parseInt(prop.getProperty("h"));
+            BOBW = Integer.parseInt(prop.getProperty("bobw"));
+            BOB_DELAY = Integer.parseInt(prop.getProperty("bob_delay"));
+            CATCH = Integer.parseInt(prop.getProperty("catch"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -136,4 +174,3 @@ public class Turkbait {
         robot.delay(2500);
     }
 }
-
