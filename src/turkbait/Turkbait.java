@@ -76,8 +76,8 @@ public class Turkbait {
         InputStream input = null;
 
         try {
-        input = new FileInputStream("config.properties");
-        prop.load(input);
+            input = new FileInputStream("config.properties");
+            prop.load(input);
 
             X = Integer.parseInt(prop.getProperty("x"));
             Y = Integer.parseInt(prop.getProperty("y"));

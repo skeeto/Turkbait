@@ -2,4 +2,5 @@ This is a very crude World of Warcraft fishing bot. Every location
 requires its own parameter tweaking and it's specifically tuned to my
 screen resolution (1689x1050) at the moment. Don't ask me for help.
 
-Parameters are set in config.properties.  This file needs to be in the same directory as Turkbait.class when running.
+Parameters are set in config.properties. This file needs to be in the
+working directory when run.
