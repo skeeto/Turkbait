@@ -3,6 +3,8 @@ package turkbait;
 import java.io.File;
 
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
@@ -11,19 +13,26 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class Turkbait {
-    public static final int X = 540;
-    public static final int Y = 100;
-    public static final int W = 600;
-    public static final int H = 350;
     public static final int BOBW = 100;
     public static final int BOB_DELAY = 200;
     public static final double CATCH = 500;
     public static final int CAST_KEY = KeyEvent.VK_F9;
 
     private static Robot robot;
-    private static int mouseX, mouseY;
+    private static int mouseX;
+    private static int mouseY;
+    private static int viewX;
+    private static int viewY;
+    private static int viewW;
+    private static int viewH;
 
     public static void main(String[] args) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        viewX = (int)(screenSize.width * 0.15);
+        viewY = (int)(screenSize.height * 0.10);
+        viewW = (int)(screenSize.width * 0.60);
+        viewH = (int)(screenSize.height * 0.30);
+
         /* Create the robot. */
         try {
             robot = new Robot();
@@ -83,21 +92,27 @@ public class Turkbait {
     }
 
     private static boolean find(BufferedImage screen) {
+        int best = 0;
         for (int x = 0; x < screen.getWidth(); x++) {
             for (int y = 0; y < screen.getHeight(); y++) {
                 int rgb = screen.getRGB(x, y);
                 int r = (rgb >> 16) & 0xFF;
                 int g = (rgb >>  8) & 0xFF;
                 int b = (rgb >>  0) & 0xFF;
-                if (r > 75 && b < 50 && g < 50) {
-                    mouseX = X + x;
-                    mouseY = Y + y;
-                    robot.mouseMove(mouseX, mouseY);
-                    return true;
+                int sum = r + g + b;
+                if (r > 127 && g > 127 && b > 127 && sum > best) {
+                    best = sum;
+                    mouseX = viewX + x;
+                    mouseY = viewY + y;
                 }
             }
         }
-        return false;
+        if (best > 0) {
+            robot.mouseMove(mouseX, mouseY);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static void save(BufferedImage image, String name) {
@@ -109,7 +124,8 @@ public class Turkbait {
     }
 
     private static BufferedImage getArea() {
-        return robot.createScreenCapture(new Rectangle(X, Y, W, H));
+        Rectangle view = new Rectangle(viewX, viewY, viewW, viewH);
+        return robot.createScreenCapture(view);
     }
 
     private static BufferedImage getBobber() {

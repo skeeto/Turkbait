@@ -1,3 +1,12 @@
-This is a very crude World of Warcraft fishing bot. Every location
-requires its own parameter tweaking and it's specifically tuned to my
-screen resolution (1689x1050) at the moment. Don't ask me for help.
+This is a very crude World of Warcraft fishing bot. Put the game in
+fullscreen windowed mode (need window manager compositing for screen
+capture), put your character's feet at the edge of the water, sit, and
+run this command to align the camera:
+
+    /run SetView(4)
+
+Pick a flat-colored location that doesn't have bright spots. The
+bobber should be the brighest thing in the fishing portion of the
+screen.
+
+Don't ask me for help.
