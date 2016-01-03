@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 public class Turkbait {
     public static final int BOBW = 100;
     public static final int BOB_DELAY = 200;
-    public static final double CATCH = 500;
+    public static final double CATCH = 400;
     public static final int CAST_KEY = KeyEvent.VK_F9;
 
     private static Robot robot;
